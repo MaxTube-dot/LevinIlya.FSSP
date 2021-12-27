@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevinIlya.FSSP", "LevinIlya.FSSP\LevinIlya.FSSP.csproj", "{CF288729-90FA-47EF-94C3-B16A3B8D92AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSSP", "FSSP\FSSP.csproj", "{721B5042-A12D-4B90-9378-2BA62CEEDAC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF288729-90FA-47EF-94C3-B16A3B8D92AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF288729-90FA-47EF-94C3-B16A3B8D92AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF288729-90FA-47EF-94C3-B16A3B8D92AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF288729-90FA-47EF-94C3-B16A3B8D92AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{721B5042-A12D-4B90-9378-2BA62CEEDAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721B5042-A12D-4B90-9378-2BA62CEEDAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721B5042-A12D-4B90-9378-2BA62CEEDAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721B5042-A12D-4B90-9378-2BA62CEEDAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDEB9206-22A0-4052-9E2B-C58821100D2B}
+	EndGlobalSection
+EndGlobal
