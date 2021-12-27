@@ -1,17 +1,29 @@
-﻿namespace FSSP
+﻿using System.Text.Json.Serialization;
+
+namespace FSSP
 {
     public class ResponseProgress
     {
-        public string status { get; set; }
-        public int code { get; set; }
-        public string exception { get; set; }
-        public InfoProgress response { get; set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        [JsonPropertyName("code")]
+        public int Code { get; set; }
+
+        [JsonPropertyName("exception")]
+        public string Exception { get; set; }
+
+        [JsonPropertyName("response")]
+        public InfoProgress Response { get; set; }
     }
 
     public class InfoProgress
     {
-        public int status { get; set; }
-        public string progress { get; set; }
+        [JsonPropertyName("status")]
+        public int Status { get; set; }
+
+        [JsonPropertyName("progress")]
+        public string Progress { get; set; }
     }
 
 

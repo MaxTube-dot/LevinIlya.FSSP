@@ -13,28 +13,25 @@ namespace LevinIlya.FSSP
             FSSPClient fSSPClient = new FSSPClient(token);
 
 
-            fSSPClient.GetPhysical(region:"46",firstName: "Илья", lastName: "Левин", secondName: "Владимирович",birthDate: "01.11.1999");
+            fSSPClient.SearchPhysicalPeople(region:"46",firstName: "Илья", lastName: "Левин", secondName: "Владимирович",birthDate: "01.11.1999");
 
             Console.WriteLine("Запрос отправлен!");
 
-             
-
-           int progress;
 
             while (true)
             {
 
-                progress = fSSPClient.GetProgress();
+                var taskPr = fSSPClient.TaskProgress;
 
-                switch (progress)
+                switch (taskPr)
                 {
-                    case 1:
+                    case TaskProgress.Ready:
                         Console.WriteLine("Запрос выполнен!");
                         break;
-                    case 2:
+                    case TaskProgress.Wait:
                         Console.WriteLine("Запрос ожидает выполнения!");
                         break;
-                    case 3:
+                    case TaskProgress.ReadyWithError:
                         Console.WriteLine("Запрос частично выполненен!");
                         break;
 
@@ -64,9 +61,9 @@ namespace LevinIlya.FSSP
                 {
                     if (user == null )
                     {
-                        Console.WriteLine($"Имя {user.name}");
+                        Console.WriteLine($"Имя {user.Name}");
 
-                        Console.WriteLine($"Детали {user.details}");
+                        Console.WriteLine($"Детали {user.Details}");
                     }
 
                 }

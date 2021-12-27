@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace FSSP
 {
-
+   public enum TaskProgress
+    {
+        Ready,
+        Wait,
+        ReadyWithError
+    }
 
     public class FSSPClient
     {
@@ -16,6 +21,11 @@ namespace FSSP
         private string Token { get; }
 
         private string TaskNumber { get; set; }
+
+        /// <summary>
+        /// Получить прогресс задачи.
+        /// </summary>
+        public TaskProgress  TaskProgress { get { return GetInfoProgress(); } }
 
 
 
@@ -33,7 +43,7 @@ namespace FSSP
         /// <param name="birthDate">Дата рождения.</param>
         /// <param name="secondName">Отчество.</param>
         /// <returns>Данные о долгах.</returns>
-        public void GetPhysical(string region, string firstName, string lastName, string birthDate, string secondName = null)
+        public void SearchPhysicalPeople(string region, string firstName, string lastName, string birthDate, string secondName = null)
         {
             GetTask(region, firstName, lastName, secondName, birthDate);
         }
@@ -68,7 +78,7 @@ namespace FSSP
         /// Получение сведений о прогрессе.
         /// </summary>
         /// <param name="task">Номер задачи. </param>
-        public int GetProgress()
+        private TaskProgress GetInfoProgress()
         {
 
             using (var webClient = new WebClient())
@@ -87,7 +97,7 @@ namespace FSSP
 
                 var answer = JsonSerializer.Deserialize<ResponseProgress>(response);
 
-                return answer.response.status;
+                return  (TaskProgress) answer.Response.Status;
 
             }
         }
@@ -109,8 +119,11 @@ namespace FSSP
             string url = "https://api-ip.fssp.gov.ru/api/v1.0/search/physical";
 
             webClient.QueryString.Add("token", Token);
+
             webClient.QueryString.Add("region", region);
+
             webClient.QueryString.Add("firstname", firstName);
+
             webClient.QueryString.Add("lastname", lastName);
 
             if (secondName != null)
@@ -120,11 +133,13 @@ namespace FSSP
 
             webClient.QueryString.Add("birthdate ", birthDate);
 
+
             var response = webClient.DownloadString(url);
+
 
             var answer = JsonSerializer.Deserialize<ResponseTask>(response);
 
-            TaskNumber = answer.response.task;
+            TaskNumber = answer.Response.Task;
         }
 
     }

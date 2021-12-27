@@ -1,16 +1,23 @@
-﻿namespace FSSP
+﻿using System.Text.Json.Serialization;
+
+namespace FSSP
 {
     public class ResponseTask
     {
-        public string status { get; set; }
-        public int code { get; set; }
-        public string exception { get; set; }
-        public InfoPhysical response { get; set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
+        [JsonPropertyName("code")]
+        public int Code { get; set; }
+        [JsonPropertyName("exception")]
+        public string Exception { get; set; }
+        [JsonPropertyName("response")]
+        public InfoTask Response { get; set; }
     }
 
-    public class InfoPhysical
+    public class InfoTask
     {
-        public string task { get; set; }
+        [JsonPropertyName("task")]
+        public string Task { get; set; }
     }
 
 
