@@ -18,28 +18,37 @@ namespace LevinIlya.FSSP
             Console.WriteLine("Запрос отправлен!");
 
 
+
+
             while (true)
             {
 
-                var taskPr = fSSPClient.TaskProgress;
+                var taskProgress = fSSPClient.TaskProgress;
 
-                switch (taskPr)
+                if (taskProgress == TaskProgress.Ready)
                 {
-                    case TaskProgress.Ready:
-                        Console.WriteLine("Запрос выполнен!");
-                        break;
-                    case TaskProgress.Wait:
-                        Console.WriteLine("Запрос ожидает выполнения!");
-                        break;
-                    case TaskProgress.ReadyWithError:
-                        Console.WriteLine("Запрос частично выполненен!");
-                        break;
+
+                    Console.WriteLine("Запрос выполнен!");
+
+                    break;
+                }
+                else if(taskProgress == TaskProgress.Wait)
+                {
+
+                    Console.WriteLine("Запрос ожидает выполнения!");
+
+                }
+                else if (taskProgress == TaskProgress.ReadyWithError)
+                {
+
+                    Console.WriteLine("Запрос частично выполненен!");
 
                 }
 
-                Console.WriteLine("Чтобы повторить проверку готовности запроса нажмите 1.");
 
-                int key = int.Parse(Console.ReadLine());
+                Console.WriteLine("Чтобы повторить проверку готовности запроса введите 1, чтобы получить результат любую другую.");
+
+                int.TryParse(Console.ReadLine(),out int key);
 
                 if (key!=1)
                 {
@@ -47,6 +56,8 @@ namespace LevinIlya.FSSP
                 }
 
             }
+
+            Console.WriteLine("Получение результата");
 
             var response = fSSPClient.GetResult();
 

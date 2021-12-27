@@ -8,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace FSSP
 {
-   public enum TaskProgress
+    public class People
     {
-        Ready,
-        Wait,
-        ReadyWithError
+        public string Region { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string BirthDate { get; set; }
+        public string SecondName { get; set; }
+
     }
+
+
 
     public class FSSPClient
     {
